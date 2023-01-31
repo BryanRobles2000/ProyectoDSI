@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{%  endblock %} | La Noticia</title>
+
+        <!-- Estilos y fuentes del template  -->
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <!-- Font Oswald -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../static/core/css/styles.css">
+    </head>
+
+    <body>
+        <div class="menu-btn">
+            <i class="fas fa-bars fa-2x"></i>
+        </div>
+
+        <div class="container">
+            <nav class="nav-main">
+                <img src="../static/core/img/brand.png" alt="Noticias LOGO" class="nav-brand">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="{% url 'inicio' %}">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'populares' %}">Populares</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'internacionales' %}">Internacionales</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'deportes' %}">Deportes</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'insolitos' %}">Insolitos</a>
+                    </li>
+
+                    <li class="siu">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Registrate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                    </li>
+
+        </div>
+        <!-- Contenido -->
+        {% block content %}{% endblock %}
+
+        <!-- Redes Sociales -->
+        <section class="social">
+            <p>Sigue nuestras redes</p>
+            <div class="links">
+                <a href="https://www.facebook.com">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Scroll Reveal -->
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <!-- Custom JS -->
+        <script src="../static/core/js/main.js" ></script>
+        <script src="../static/core/js/popup.js"></script>
+    </body>
+</html>
